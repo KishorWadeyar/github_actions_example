@@ -1,13 +1,18 @@
 name: Demo Github Actions Workflow
-on : [push]
+
+on: [push]
+
 jobs:
   Discover-Github-Actions-Workflows:
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "${{github.event.name}} automatically triggered this job"
-      - run: exho "A ${{runner.os}} server has this hosted by github"
-      - run: echo "{{github.repository}} is updated. Updated branch name is {{github.ref}}"
+      - run: echo "${{ github.event_name }} automatically triggered this job"
+
+      - run: echo "A ${{ runner.os }} server is hosted by GitHub"
+
+      - run: echo "${{ github.repository }} is updated. Updated branch name is ${{ github.ref }}"
+
       - uses: actions/checkout@v3
-      - run: echo "The runner has cloned the ${{github.repository}} repository"
-      
-      
+
+      - run: echo "The runner has cloned the ${{ github.repository }} repository"
